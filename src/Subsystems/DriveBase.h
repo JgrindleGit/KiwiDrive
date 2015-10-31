@@ -14,6 +14,9 @@ private:
 	Victor* c1;
 	Victor* c2;
 	Victor* c3;
+
+	Timer* timer;
+
 	float kp;
 	float ki;
 	float kd;
@@ -21,14 +24,17 @@ private:
 	float x;
 	float deadzone;
 	float tx;
+	float I;
+	float tim = 0;
 
 public:
 	DriveBase();
 	void InitDefaultCommand();
 	virtual void Drive(float, float, float);
-	virtual void PIDDrive(float, float, float);
+	virtual void PDDrive(float, float, float, float, float);
 	virtual void dzFixer(float);
 	float des = 0;
+	float error();
 };
 
 #endif
