@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 
 Elevator::Elevator() :
-		Subsystem("ExampleSubsystem")
+		Subsystem("Elevator")
 {
 	eleL = new Victor(LIFTLEFT);
 	eleR = new Victor(LIFTRIGHT);

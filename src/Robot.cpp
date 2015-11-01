@@ -5,6 +5,8 @@
 
 class Robot: public IterativeRobot
 {
+public:
+	bool isAuto;
 private:
 	Command *autonomousCommand;
 	LiveWindow *lw;

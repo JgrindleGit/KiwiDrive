@@ -37,7 +37,7 @@ void DriveBase::dzFixer(float z){
 	}
 }
 
-void DriveBase::PDDrive(float drive, float turn, float strafe, float kp, float kd)
+void DriveBase::PIDDrive(float drive, float turn, float strafe, float kp, float kd)
 {
 
 	x = g1->GetAngle();
