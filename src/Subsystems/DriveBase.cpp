@@ -31,6 +31,9 @@ void DriveBase::Drive(float joy_X, float joy_Y, float joy_Z){
 void DriveBase::TimerStart(){
 	timer->Start();
 }
+void DriveBase::TimerStop(){
+	timer->Stop();
+}
 //Used to fix deadzones on Joysticks, Gyros, or anything else
 void DriveBase::dzFixer(float z){
 	if((z >-(deadzone)) && (z < (deadzone))){
