@@ -33,4 +33,10 @@ const int INTAKERSPIKE = 1;
 
 const int INTAKELPNE = 0;
 const int INTAKERPNE = 1;
+
+//!!!!Joystick!!!!
+const int LX = 1;
+const int LY = 2;
+const int RX = 5;
+const int RY = 6;
 #endif

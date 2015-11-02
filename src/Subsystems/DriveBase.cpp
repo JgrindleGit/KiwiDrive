@@ -12,7 +12,6 @@ DriveBase::DriveBase() :
 	c3 = new Victor(CON3);
 
 	timer = new Timer();
-	timer->Start();
 }
 
 void DriveBase::InitDefaultCommand()
@@ -29,7 +28,9 @@ void DriveBase::Drive(float joy_X, float joy_Y, float joy_Z){
 	c2->Set(Con2);
 	c3->Set(Con3);
 }
-
+void DriveBase::TimerStart(){
+	timer->Start();
+}
 //Used to fix deadzones on Joysticks, Gyros, or anything else
 void DriveBase::dzFixer(float z){
 	if((z >-(deadzone)) && (z < (deadzone))){
@@ -37,23 +38,27 @@ void DriveBase::dzFixer(float z){
 	}
 }
 
-void DriveBase::PIDDrive(float drive, float turn, float strafe, float kp, float kd)
+void DriveBase::PIDDrive(float drive, float turn, float strafe)
 {
-
-	x = g1->GetAngle();
-	dzFixer(x);
 	dzFixer(turn);
-	I += (error()/tim);
-	tim = float(timer->Get());
 	if(turn == 0 && (strafe > deadzone|| strafe < deadzone))
 	{
+		tim = float(timer->Get());
+		x = g1->GetAngle();
+		dzFixer(x);
+		I += (error()/tim);
 		output = (error()* kp) + ((x+kp)*kd) + (I*ki);// First Parentheses = Error, Second set = Derivitive of the first term
+		Drive(drive, output, strafe); //Correction made here
+		tim -= float(timer->Get());
 	}
-	Drive(drive, output, strafe); //Correction made here
-	tim -= float(timer->Get());
+
 }
 float DriveBase::error(){
 	float err;
 	err = (0-x);
 	return err;
 }
+void DriveBase::DStop(){
+	Drive(0,0,0);
+}
+
