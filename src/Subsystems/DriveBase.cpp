@@ -44,9 +44,9 @@ void DriveBase::dzFixer(float z){
 void DriveBase::PIDDrive(float drive, float turn, float strafe)
 {
 	dzFixer(turn);
+	tim = float(timer->Get());
 	if(turn == 0 && (strafe > deadzone|| strafe < deadzone))
 	{
-		tim = float(timer->Get());
 		x = g1->GetAngle();
 		dzFixer(x);
 		I += (error()/tim);
