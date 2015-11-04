@@ -26,6 +26,7 @@ private:
 	float tx;
 	float I;
 	float tim = 0;
+	float prevError = 0;
 
 public:
 	DriveBase();

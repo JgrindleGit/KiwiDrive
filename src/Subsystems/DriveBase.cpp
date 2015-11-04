@@ -49,12 +49,16 @@ void DriveBase::PIDDrive(float drive, float turn, float strafe)
 	{
 		x = g1->GetAngle();
 		dzFixer(x);
-		I += (error()/tim);
-		output = (error()* kp) + ((x+kp)*kd) + (I*ki);// First Parentheses = Error, Second set = Derivitive of the first term
+		float P = (error()*kp);
+		I += ((error()/tim)*ki);
+		float D = ((error()-prevError)*kd);
+		output = (P + I + D);// First Parentheses = Error, Second set = Derivitive of the first term
 		Drive(drive, output, strafe); //Correction made here
 		tim -= float(timer->Get());
+		prevError = error();
+	}else{
+		Drive(drive,turn,strafe);
 	}
-
 }
 float DriveBase::error(){
 	float err;
