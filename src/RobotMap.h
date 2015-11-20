@@ -25,18 +25,18 @@ const int CON1 = 0;
 const int CON2 = 1;
 const int CON3 = 2;
 
-const int LIFTRIGHT = 3;
+/**const int LIFTRIGHT = 3;
 const int LIFTLEFT = 4;
 
 const int INTAKELSPIKE = 0;
 const int INTAKERSPIKE = 1;
 
 const int INTAKELPNE = 0;
-const int INTAKERPNE = 1;
+const int INTAKERPNE = 1;**/
 
 //!!!!Joystick!!!!
-const int LX = 1;
-const int LY = 2;
-const int RX = 5;
-const int RY = 6;
+const int LX = 0;
+const int LY = 1;
+const int RX = 4;
+const int RY = 5;
 #endif

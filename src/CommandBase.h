@@ -5,7 +5,7 @@
 #include "Commands/Command.h"
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveBase.h"
-#include "Subsystems/Elevator.h"
+#include "Subsystems/Shooter.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -22,8 +22,8 @@ public:
 	static void init();
 	// Create a single static instance of all of your subsystems
 	static ExampleSubsystem *examplesubsystem;
-	static Elevator *ele;
 	static DriveBase *driveB;
+	static Shooter *shoot;
 	static OI *oi;
 };
 

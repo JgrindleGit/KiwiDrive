@@ -17,9 +17,12 @@ void TeleDrive::Initialize()
 void TeleDrive::Execute()
 {
 	float drive = (oi->getXbox()->GetRawAxis(LY));
+	driveB->dzFixer(drive);
 	float turn = (oi->getXbox()->GetRawAxis(RX));
+	driveB->dzFixer(turn);
 	float strafe = (oi->getXbox()->GetRawAxis(LX));
-	driveB->PIDDrive(drive, turn, strafe);
+	driveB->dzFixer(strafe);
+	driveB->Drive(drive, turn, strafe);
 }
 
 // Make this return true when this Command no longer needs to run execute()

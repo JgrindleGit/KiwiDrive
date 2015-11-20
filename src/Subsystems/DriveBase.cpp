@@ -1,5 +1,6 @@
 #include "DriveBase.h"
 #include "../RobotMap.h"
+#include "Commands/TeleDrive.h"
 
 DriveBase::DriveBase() :
 		Subsystem("DriveBase")
@@ -8,7 +9,7 @@ DriveBase::DriveBase() :
 	g1 = new Gyro(GYRO1);
 
 	c1 = new Victor(CON1);
-	c2 = new Victor(CON3);
+	c2 = new Victor(CON2);
 	c3 = new Victor(CON3);
 
 	timer = new Timer();
@@ -18,6 +19,7 @@ void DriveBase::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new TeleDrive());
 }
 void DriveBase::Drive(float joy_X, float joy_Y, float joy_Z){
 	float Con1 = (joy_X + joy_Z);
