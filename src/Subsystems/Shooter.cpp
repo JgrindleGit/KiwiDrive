@@ -57,6 +57,11 @@ void Shooter::MotShoot(int POV){
 	Motset(speeds[sped]);
 
 }
-
+double Shooter::getSped(){
+	return double(sped);
+}
+double Shooter::getSpeed(){
+	return double(speeds[sped]);
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

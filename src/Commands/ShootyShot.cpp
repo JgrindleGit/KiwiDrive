@@ -17,6 +17,8 @@ void ShootyShot::Initialize()
 void ShootyShot::Execute()
 {
 	shoot->MotShoot(oi->getXbox()->GetPOV());
+	SmartDashboard::PutNumber("Current Sped: ", shoot->getSped());
+	SmartDashboard::PutNumber("Current Speed: ", shoot->getSpeed());
 }
 
 // Make this return true when this Command no longer needs to run execute()

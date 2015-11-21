@@ -20,6 +20,8 @@ public:
 	virtual void Speedup(int);
 	virtual void Motset(float);
 	virtual void MotShoot(int);
+	double getSped();
+	double getSpeed();
 };
 
 #endif
