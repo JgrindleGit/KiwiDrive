@@ -18,9 +18,9 @@ void TeleDrive::Execute()
 {
 	float drive = (oi->getXbox()->GetRawAxis(LY));
 	driveB->dzFixer(drive);
-	float turn = (oi->getXbox()->GetRawAxis(RX));
+	float turn = (oi->getXbox()->GetRawAxis(LX));
 	driveB->dzFixer(turn);
-	float strafe = (oi->getXbox()->GetRawAxis(LX));
+	float strafe = (oi->getXbox()->GetRawAxis(RX));
 	driveB->dzFixer(strafe);
 	driveB->Drive(drive, turn, strafe);
 }

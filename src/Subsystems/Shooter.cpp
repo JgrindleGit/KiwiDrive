@@ -7,6 +7,7 @@ Shooter::Shooter() :
 {
 	wh1 = new Victor(4);
 	wh2 = new Victor(3);
+
 }
 
 void Shooter::InitDefaultCommand()
@@ -56,5 +57,6 @@ void Shooter::MotShoot(int POV){
 	Motset(speeds[sped]);
 
 }
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

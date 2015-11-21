@@ -6,6 +6,7 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveBase.h"
 #include "Subsystems/Shooter.h"
+#include "Subsystems/Cam.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -24,6 +25,7 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static DriveBase *driveB;
 	static Shooter *shoot;
+	static Cam *cam;
 	static OI *oi;
 };
 

@@ -18,7 +18,7 @@ private:
 		lw = LiveWindow::GetInstance();
 		CameraServer::GetInstance()->SetQuality(50);
 		//the camera name (ex "cam0") can be found through the roborio web interface
-		CameraServer::GetInstance()->StartAutomaticCapture("USB0::0x1415::0x2000::NI-VISA-1003::2::RAW");
+		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 	}
 	
 	void DisabledPeriodic()

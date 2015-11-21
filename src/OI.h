@@ -11,6 +11,7 @@ private:
 public:
 	OI();
 	Joystick* getXbox();
+	JoystickButton* frisShot;
 };
 
 #endif
