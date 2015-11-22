@@ -22,6 +22,7 @@ public:
 	virtual void MotShoot(int);
 	double getSped();
 	double getSpeed();
+	bool getChange();
 };
 
 #endif

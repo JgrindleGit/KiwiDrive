@@ -7,6 +7,9 @@ OI::OI()
 	xbox = new Joystick(0);
 	frisShot = new JoystickButton(xbox, 5);
 	frisShot->WhenPressed(new MoveCam());
+
+
+	SmartDashboard::PutData("Actuate Cam", new MoveCam());
 }
 Joystick* OI::getXbox(){
 	return (xbox);

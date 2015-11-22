@@ -63,5 +63,8 @@ double Shooter::getSped(){
 double Shooter::getSpeed(){
 	return double(speeds[sped]);
 }
+bool Shooter::getChange(){
+	return change;
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
