@@ -22,9 +22,9 @@ void DriveBase::InitDefaultCommand()
 	SetDefaultCommand(new TeleDrive());
 }
 void DriveBase::Drive(float joy_X, float joy_Y, float joy_Z){
-	float Con1 = (joy_X + joy_Z);
-	float Con2 = ((-((joy_X)/2))+((sqrt(3)/2)*(joy_Y)) + joy_Z);
-	float Con3 = ((-((joy_X)/2))-((sqrt(3)/2)*(joy_Y)) + joy_Z);
+	float Con1 = (0.5*(joy_X + joy_Z));
+	float Con2 = (0.5*((-((joy_X)/2))+((sqrt(3)/2)*(joy_Y)) + joy_Z));
+	float Con3 = (0.5*((-((joy_X)/2))-((sqrt(3)/2)*(joy_Y)) + joy_Z));
 
 	c1->Set(Con1);
 	c2->Set(Con2);
@@ -43,7 +43,7 @@ void DriveBase::dzFixer(float z){
 	}
 }
 
-void DriveBase::PIDDrive(float drive, float turn, float strafe)
+void DriveBase::PIDDrive(float drive, float turn, float strafe, float kpp, float kip, float kip)
 {
 	dzFixer(turn);
 	tim = float(timer->Get());

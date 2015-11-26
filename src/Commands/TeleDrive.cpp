@@ -16,13 +16,14 @@ void TeleDrive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void TeleDrive::Execute()
 {
-	float drive = -(oi->getXbox()->GetRawAxis(LY));
-	driveB->dzFixer(drive);
-	float turn = -(oi->getXbox()->GetRawAxis(LX));
-	driveB->dzFixer(turn);
-	float strafe = -(oi->getXbox()->GetRawAxis(RX));
-	driveB->dzFixer(strafe);
-	driveB->Drive(-turn, drive, strafe);
+	float drive = (oi->getXbox()->GetRawAxis(LY));
+	float turn = (oi->getXbox()->GetRawAxis(RX));
+	float strafe = (oi->getXbox()->GetRawAxis(LX));
+
+	driveB->Drive(strafe, -drive, -(turn*0.5));
+	SmartDashboard::GetNumber();
+	SmartDashboard::GetNumber();
+	SmartDashboard::GetNumber();
 }
 
 // Make this return true when this Command no longer needs to run execute()

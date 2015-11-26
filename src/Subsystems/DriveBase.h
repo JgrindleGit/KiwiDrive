@@ -32,7 +32,7 @@ public:
 	DriveBase();
 	void InitDefaultCommand();
 	virtual void Drive(float, float, float);
-	virtual void PIDDrive(float, float, float);
+	virtual void PIDDrive(float, float, float, float, float, float);
 	virtual void dzFixer(float);
 	virtual void TimerStart();
 	virtual void TimerStop();
