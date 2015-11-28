@@ -3,20 +3,20 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-
+#include "AHRS.h"
 class DriveBase: public Subsystem
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities]
-	Gyro* g1;
+	//GYRO NAVX MXP
+	AHRS* nav;
 
+	//DRIVEBASE WHEELS
 	Victor* c1;
 	Victor* c2;
 	Victor* c3;
 
+	//PID LOOP STUFF
 	Timer* timer;
-
 	float kp;
 	float ki;
 	float kd;

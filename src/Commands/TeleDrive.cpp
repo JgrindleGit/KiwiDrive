@@ -21,9 +21,9 @@ void TeleDrive::Execute()
 	float strafe = (oi->getXbox()->GetRawAxis(LX));
 
 	driveB->Drive(strafe, -drive, -(turn*0.5));
-	SmartDashboard::GetNumber();
-	SmartDashboard::GetNumber();
-	SmartDashboard::GetNumber();
+	SmartDashboard::GetNumber("DrivePID P Term: ", 1.0);
+	SmartDashboard::GetNumber("DrivePID I Term: ", 0.1);
+	SmartDashboard::GetNumber("DrivePID D Term: ", 1.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

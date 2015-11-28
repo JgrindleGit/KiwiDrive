@@ -5,9 +5,14 @@
 DriveBase::DriveBase() :
 		Subsystem("DriveBase")
 {
-	deadzone = 0.3;
-	g1 = new Gyro(GYRO1);
-
+	deadzone = 0.03;
+	try {
+		nav = new AHRS(I2C::Port::kMXP);
+	} catch (std::exception ex ) {
+		std::string err_string = "Error instantiating navX MXP:  ";
+        err_string += ex.what();
+        DriverStation::ReportError(err_string.c_str());
+	}
 	c1 = new Victor(CON1);
 	c2 = new Victor(CON2);
 	c3 = new Victor(CON3);
@@ -43,13 +48,16 @@ void DriveBase::dzFixer(float z){
 	}
 }
 
-void DriveBase::PIDDrive(float drive, float turn, float strafe, float kpp, float kip, float kip)
+void DriveBase::PIDDrive(float drive, float turn, float strafe, float kpp, float kip, float kid)
 {
+	kp = kpp;
+	ki = kip;
+	kd = kid;
 	dzFixer(turn);
 	tim = float(timer->Get());
 	if(turn == 0)
 	{
-		x = g1->GetAngle();
+		x = nav->GetYaw();
 		dzFixer(x);
 		float P = (error()*kp);
 		I += ((error()/tim)*ki);

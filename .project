@@ -3,6 +3,7 @@
 	<name>KiwiDrive</name>
 	<comment></comment>
 	<projects>
+		<project>KiwiDrive</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
