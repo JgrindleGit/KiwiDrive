@@ -42,40 +42,51 @@ void DriveBase::TimerStop(){
 	timer->Stop();
 }
 //Used to fix deadzones on Joysticks, Gyros, or anything else
-void DriveBase::dzFixer(float z){
+float DriveBase::dzFixer(float z){
 	if((z >-(deadzone)) && (z < (deadzone))){
 		z = 0;
 	}
+	return z;
 }
 
-void DriveBase::PIDDrive(float drive, float turn, float strafe, float kpp, float kip, float kid)
+void DriveBase::PIDDrive(float drive, float turn, float strafe)
 {
 	turnkp = SmartDashboard::GetNumber("TurnKp",1.0);
 	turnki = SmartDashboard::GetNumber("TurnKi",0.1);
 	turnkd = SmartDashboard::GetNumber("TurnKd",1.0);
-	dzFixer(turn);
+	float dzTurn = dzFixer(turn);
+	float dzDrive = dzFixer(drive);
+	float dzStrafe = dzFixer(strafe);
 	turntim = float(timer->Get());
-	if(turn == 0)
+	float turnHeading = nav->GetYaw();
+	if(dzTurn == 0)
 	{
 		turnx = nav->GetYaw();
 		dzFixer(turnx);
-		float turnP = (error(turnx)*turnkp);
-		turnI += ((error(turnx)/turntim)*turnki);
-		float turnD = ((error(turnx)-turnprevError)*turnkd);
+		float turnP = (error(turnHeading, turnx)*turnkp);
+		turnI += ((error(turnHeading, turnx)/turntim)*turnki);
+		float turnD = ((error(turnHeading, turnx)-turnprevError)*turnkd);
 		turnoutput = (turnP + turnI + turnD);// First Parentheses = Error, Second set = Derivitive of the first term
 		Drive(drive, turnoutput, strafe); //Correction made here
 		turntim -= float(timer->Get());
-		turnprevError = error(turnx);
-	}else{
-		Drive(drive,turn,strafe);
+		turnprevError = error(turnHeading, turnx);
+	}else if(dzStrafe == 0 && dzDrive == 0){
+
 	}
 }
-float DriveBase::error(int var){
+float DriveBase::error(float initial, float var){
 	float err;
-	err = (0-var);
+	err = (initial-var);
 	return err;
 }
 void DriveBase::DStop(){
 	Drive(0,0,0);
 }
-
+void DriveBase::VelPID(bool strafe){
+	velkp = SmartDashboard::GetNumber("VelKp",1.0);
+	velki = SmartDashboard::GetNumber("VelKi",0.1);
+	velkd = SmartDashboard::GetNumber("VelKd",1.0);
+	if(strafe == true){
+		velx = nav->GetVelocityY();
+	}
+}
