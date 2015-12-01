@@ -17,16 +17,27 @@ private:
 
 	//PID LOOP STUFF
 	Timer* timer;
-	float kp;
-	float ki;
-	float kd;
-	float output;
-	float x;
-	float deadzone;
-	float tx;
-	float I;
-	float tim = 0;
-	float prevError = 0;
+	float turnkp;
+	float turnki;
+	float turnkd;
+	float turnoutput;
+	float turnx;
+	float turndeadzone;
+	float turntx;
+	float turnI;
+	float turntim = 0;
+	float turnprevError = 0;
+
+	float velkp;
+	float velki;
+	float velkd;
+	float veloutput;
+	float velx;
+	float veldeadzone;
+	float veltx;
+	float velI;
+	float veltim = 0;
+	float velprevError = 0;
 
 public:
 	DriveBase();

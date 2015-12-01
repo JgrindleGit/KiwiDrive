@@ -50,29 +50,29 @@ void DriveBase::dzFixer(float z){
 
 void DriveBase::PIDDrive(float drive, float turn, float strafe, float kpp, float kip, float kid)
 {
-	kp = kpp;
-	ki = kip;
-	kd = kid;
+	turnkp = SmartDashboard::GetNumber("TurnKp",1.0);
+	turnki = SmartDashboard::GetNumber("TurnKi",0.1);
+	turnkd = SmartDashboard::GetNumber("TurnKd",1.0);
 	dzFixer(turn);
-	tim = float(timer->Get());
+	turntim = float(timer->Get());
 	if(turn == 0)
 	{
-		x = nav->GetYaw();
-		dzFixer(x);
-		float P = (error()*kp);
-		I += ((error()/tim)*ki);
-		float D = ((error()-prevError)*kd);
-		output = (P + I + D);// First Parentheses = Error, Second set = Derivitive of the first term
+		turnx = nav->GetYaw();
+		dzFixer(turnx);
+		float turnP = (error(x)*turnkp);
+		turnI += ((error(x)/turntim)*turnki);
+		float turnD = ((error(x)-turnprevError)*turnkd);
+		turnoutput = (turnP + turnI + turnD);// First Parentheses = Error, Second set = Derivitive of the first term
 		Drive(drive, output, strafe); //Correction made here
-		tim -= float(timer->Get());
-		prevError = error();
+		turntim -= float(timer->Get());
+		turnprevError = error();
 	}else{
 		Drive(drive,turn,strafe);
 	}
 }
-float DriveBase::error(){
+float DriveBase::error(int var){
 	float err;
-	err = (0-x);
+	err = (0-var);
 	return err;
 }
 void DriveBase::DStop(){
