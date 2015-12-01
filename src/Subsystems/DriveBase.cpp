@@ -67,7 +67,7 @@ void DriveBase::PIDDrive(float drive, float turn, float strafe)
 		turnI += ((error(turnHeading, turnx)/turntim)*turnki);
 		float turnD = ((error(turnHeading, turnx)-turnprevError)*turnkd);
 		turnoutput = (turnP + turnI + turnD);// First Parentheses = Error, Second set = Derivitive of the first term
-		Drive(drive, turnoutput, strafe); //Correction made here
+		Drive(strafe, drive, turnoutput); //Correction made here
 		turntim -= float(timer->Get());
 		turnprevError = error(turnHeading, turnx);
 	}else if(dzStrafe == 0 && dzDrive == 0){
