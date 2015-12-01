@@ -12,10 +12,13 @@ private:
 	I2C* arduino;
 	uint8_t thing[];
 	uint8_t arduinoPort;
+	bool change;
+	int lightSet;
 public:
 	FancyLights();
 	void InitDefaultCommand();
 	void SetFrisLights(int, int);
+	void SetBase(int);
 };
 
 #endif
