@@ -16,7 +16,7 @@ void FancyLights::InitDefaultCommand()
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-int FancyLights::SetBase(int dir){
+void FancyLights::SetBase(int dir){
 	switch(dir){
 	case 90:
 		//do something

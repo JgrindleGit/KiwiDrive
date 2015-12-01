@@ -59,13 +59,13 @@ void DriveBase::PIDDrive(float drive, float turn, float strafe, float kpp, float
 	{
 		turnx = nav->GetYaw();
 		dzFixer(turnx);
-		float turnP = (error(x)*turnkp);
-		turnI += ((error(x)/turntim)*turnki);
-		float turnD = ((error(x)-turnprevError)*turnkd);
+		float turnP = (error(turnx)*turnkp);
+		turnI += ((error(turnx)/turntim)*turnki);
+		float turnD = ((error(turnx)-turnprevError)*turnkd);
 		turnoutput = (turnP + turnI + turnD);// First Parentheses = Error, Second set = Derivitive of the first term
-		Drive(drive, output, strafe); //Correction made here
+		Drive(drive, turnoutput, strafe); //Correction made here
 		turntim -= float(timer->Get());
-		turnprevError = error();
+		turnprevError = error(turnx);
 	}else{
 		Drive(drive,turn,strafe);
 	}
