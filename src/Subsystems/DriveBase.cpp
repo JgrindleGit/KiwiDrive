@@ -55,8 +55,8 @@ void DriveBase::PIDDrive(float drive, float turn, float strafe)
 	turnki = SmartDashboard::GetNumber("TurnKi",0.1);
 	turnkd = SmartDashboard::GetNumber("TurnKd",1.0);
 	float dzTurn = dzFixer(turn);
-	float dzDrive = dzFixer(drive);
-	float dzStrafe = dzFixer(strafe);
+	//float dzDrive = dzFixer(drive);
+	//float dzStrafe = dzFixer(strafe);
 	turntim = float(timer->Get());
 	float turnHeading = nav->GetYaw();
 	if(dzTurn == 0)
@@ -67,11 +67,11 @@ void DriveBase::PIDDrive(float drive, float turn, float strafe)
 		turnI += ((error(turnHeading, turnx)/turntim)*turnki);
 		float turnD = ((error(turnHeading, turnx)-turnprevError)*turnkd);
 		turnoutput = (turnP + turnI + turnD);// First Parentheses = Error, Second set = Derivitive of the first term
-		Drive(strafe, drive, turnoutput); //Correction made here
+		Drive(drive, strafe, turnoutput); //Correction made here
 		turntim -= float(timer->Get());
 		turnprevError = error(turnHeading, turnx);
-	}else if(dzStrafe == 0 && dzDrive == 0){
-
+	}else {
+		Drive(strafe, drive, turn);
 	}
 }
 float DriveBase::error(float initial, float var){
