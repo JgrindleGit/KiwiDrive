@@ -20,8 +20,8 @@ void TeleDrive::Execute()
 	float turn = (oi->getXbox()->GetRawAxis(RX));
 	float strafe = (oi->getXbox()->GetRawAxis(LX));
 
-	driveB->PIDDrive(strafe, -drive, -(turn*0.5));
-	SmartDashboard::GetNumber("DrivePID P Term: ", 1.0);
+	driveB->Drive(strafe, -drive, -(turn)*0.5);
+	SmartDashboard::GetNumber("DrivePID P Term: ", 0.8);
 	SmartDashboard::GetNumber("DrivePID I Term: ", 0.1);
 	SmartDashboard::GetNumber("DrivePID D Term: ", 1.0);
 }

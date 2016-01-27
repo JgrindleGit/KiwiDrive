@@ -25,7 +25,9 @@ private:
 	float turnoutput;
 	float turnx;
 	float turntx;
+	float turnP;
 	float turnI;
+	float turnD;
 	float turntim = 0;
 	float turnprevError = 0;
 
