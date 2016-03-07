@@ -14,7 +14,7 @@ private:
 public:
 	Cam();
 	void InitDefaultCommand();
-	virtual void spin();
+	virtual void spin(float);
 	virtual void CamSet();
 };
 

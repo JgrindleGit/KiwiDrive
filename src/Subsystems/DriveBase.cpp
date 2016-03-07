@@ -49,11 +49,9 @@ float DriveBase::dzFixer(float z){
 	return z;
 }
 
-void DriveBase::PIDDrive(float drive, float turn, float strafe)
+void DriveBase::PIDDrive(float drive, float turn, float strafe,float turnkp,float turnki,float turnkd)
 {
-	turnkp = SmartDashboard::GetNumber("TurnKp",1.0);
-	turnki = SmartDashboard::GetNumber("TurnKi",0.1);
-	turnkd = SmartDashboard::GetNumber("TurnKd",1.0);
+
 	float dzTurn = dzFixer(turn);
 	//float dzDrive = dzFixer(drive);
 	//float dzStrafe = dzFixer(strafe);

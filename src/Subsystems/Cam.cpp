@@ -13,18 +13,12 @@ void Cam::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
-void Cam::spin(){
-	if(camstop->Get()){
-		cam->Set(1);
-	}else{
-		cam->Set(0);
-	}
+void Cam::spin(float spin){
+	cam->Set(spin);
 }
 void Cam::CamSet(){
-	if(camstop->Get() == false){
-		cam->Set(1);
-	}
-	cam->Set(0);
+
+
 }
 
 // Put methods for controlling this subsystem

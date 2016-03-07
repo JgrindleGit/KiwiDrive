@@ -25,7 +25,7 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static DriveBase *driveB;
 	static Shooter *shoot;
-	static Cam *cam;
+	static Cam *camM;
 	static OI *oi;
 };
 

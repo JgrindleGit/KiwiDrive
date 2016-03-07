@@ -9,7 +9,7 @@
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 DriveBase* CommandBase::driveB = NULL;
 Shooter* CommandBase::shoot = NULL;
-Cam* CommandBase::cam = NULL;
+Cam* CommandBase::camM = NULL;
 OI* CommandBase::oi = NULL;
 
 CommandBase::CommandBase(char const *name) :
@@ -30,6 +30,6 @@ void CommandBase::init()
 	examplesubsystem = new ExampleSubsystem();
 	driveB = new DriveBase();
 	shoot = new Shooter();
-	cam = new Cam();
+	camM = new Cam();
 	oi = new OI();
 }

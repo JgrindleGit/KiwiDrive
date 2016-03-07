@@ -4,19 +4,19 @@ MoveCam::MoveCam()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(cam);
+	Requires(camM);
 }
 
 // Called just before this Command runs the first time
 void MoveCam::Initialize()
 {
-	cam->CamSet();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void MoveCam::Execute()
 {
-	cam->spin();
+	camM->spin(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -28,7 +28,7 @@ bool MoveCam::IsFinished()
 // Called once after isFinished returns true
 void MoveCam::End()
 {
-	cam->CamSet();
+	camM->spin(0);
 }
 
 // Called when another command which requires one or more of the same
