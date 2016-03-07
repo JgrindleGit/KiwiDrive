@@ -5,14 +5,15 @@ TeleDrive::TeleDrive()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(driveB);
-	SmartDashboard::PutNumber("DrivePID P Term: ", 0.8);
-	SmartDashboard::PutNumber("DrivePID I Term: ", 0.1);
-	SmartDashboard::PutNumber("DrivePID D Term: ", 1.0);
 }
 
 // Called just before this Command runs the first time
 void TeleDrive::Initialize()
 {
+	SmartDashboard::PutNumber("DrivePID P Term: ", 0.8);
+	SmartDashboard::PutNumber("DrivePID I Term: ", 0.1);
+	SmartDashboard::PutNumber("DrivePID D Term: ", 1.0);
+
 	driveB->TimerStart();
 }
 
