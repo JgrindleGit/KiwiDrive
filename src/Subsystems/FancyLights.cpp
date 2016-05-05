@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 
 FancyLights::FancyLights() :
-		Subsystem("")
+		Subsystem("Lights")
 {
 
 	arduino = new I2C(I2C::Port::kOnboard, arduinoPort);

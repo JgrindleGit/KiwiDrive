@@ -7,7 +7,7 @@ DriveBase::DriveBase() :
 {
 	deadzone = 0.03;
 	try {
-		nav = new AHRS(I2C::Port::kMXP);
+		nav = new AHRS(SPI::Port::kMXP);
 	} catch (std::exception ex ) {
 		std::string err_string = "Error instantiating navX MXP:  ";
         err_string += ex.what();
@@ -51,7 +51,7 @@ float DriveBase::dzFixer(float z){
 
 void DriveBase::PIDDrive(float drive, float turn, float strafe,float turnkp,float turnki,float turnkd)
 {
-
+	/**
 	float dzTurn = dzFixer(turn);
 	//float dzDrive = dzFixer(drive);
 	//float dzStrafe = dzFixer(strafe);
@@ -70,7 +70,7 @@ void DriveBase::PIDDrive(float drive, float turn, float strafe,float turnkp,floa
 		turnprevError = error(turnHeading, turnx);
 	}else {
 		Drive(strafe, drive, turn);
-	}
+	}**/
 }
 float DriveBase::error(float initial, float var){
 	float err;
@@ -81,10 +81,10 @@ void DriveBase::DStop(){
 	Drive(0,0,0);
 }
 void DriveBase::VelPID(bool strafe){
-	velkp = SmartDashboard::GetNumber("VelKp",1.0);
+	/**velkp = SmartDashboard::GetNumber("VelKp",1.0);
 	velki = SmartDashboard::GetNumber("VelKi",0.1);
 	velkd = SmartDashboard::GetNumber("VelKd",1.0);
 	if(strafe == true){
 		velx = nav->GetVelocityY();
-	}
+	}**/
 }

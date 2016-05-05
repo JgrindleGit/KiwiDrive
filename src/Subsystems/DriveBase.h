@@ -31,7 +31,7 @@ private:
 	float turntim = 0;
 	float turnprevError = 0;
 
-	float velkp;
+	/**float velkp;
 	float velki;
 	float velkd;
 	float veloutput;
@@ -39,7 +39,7 @@ private:
 	float veltx;
 	float velI;
 	float veltim = 0;
-	float velprevError = 0;
+	float velprevError = 0;**/
 
 public:
 	DriveBase();
