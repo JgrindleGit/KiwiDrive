@@ -12,11 +12,11 @@ void FauxShooter::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
-void FauxShooter::SetServo()
+/**void FauxShooter::SetServo()
 {
 
 }
 float FauxShooter::input(float angle)
 {
 
-}
+}**/

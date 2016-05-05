@@ -28,13 +28,11 @@ void PID::setKs(float kp, float ki, float kd)
 }
 float PID::pid(float des, float cur)
 {
-
-
 	float err = error(des, cur);
 	float prop = err * kP;
 	integral = (err/tim)*kI;
 	float derivative = (err - prevErr)*kD;
-	float Out = (prop + integral + derivative);
+	float out = (prop + integral + derivative);
 	prevErr = err;
 	return out;
 	tim -= float(timer->Get());
@@ -51,4 +49,10 @@ float PID::dzFix(float z, float deadzone)
 			z = 0;
 		}
 	return z;
+}
+void PID::TimerStart(){
+	timer->Start();
+}
+void PID::TimerStop(){
+	timer->Stop();
 }

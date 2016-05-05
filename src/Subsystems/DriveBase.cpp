@@ -17,7 +17,7 @@ DriveBase::DriveBase() :
 	c2 = new Victor(CON2);
 	c3 = new Victor(CON3);
 
-	timer = new Timer();
+	//timer = new Timer();
 }
 
 void DriveBase::InitDefaultCommand()
@@ -36,10 +36,10 @@ void DriveBase::Drive(float joy_X/**Strafe*/, float joy_Y/**Drive*/, float joy_Z
 	c3->Set(Con3);
 }
 void DriveBase::TimerStart(){
-	timer->Start();
+	//timer->Start();
 }
 void DriveBase::TimerStop(){
-	timer->Stop();
+	//timer->Stop();
 }
 //Used to fix deadzones on Joysticks, Gyros, or anything else
 float DriveBase::dzFixer(float z){

@@ -17,7 +17,7 @@ private:
 
 	//PID LOOP STUFF
 	float deadzone;
-
+	/**
 	Timer* timer;
 	float turnkp;
 	float turnki;
@@ -29,7 +29,7 @@ private:
 	float turnI;
 	float turnD;
 	float turntim = 0;
-	float turnprevError = 0;
+	float turnprevError = 0;**/
 
 	/**float velkp;
 	float velki;

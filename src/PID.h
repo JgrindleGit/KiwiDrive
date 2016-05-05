@@ -19,6 +19,8 @@ public:
 	virtual void setKs(float kp, float ki, float kd);
 	virtual float error(float initial, float var);
 	virtual float dzFix(float z, float deadzone);
+	virtual void TimerStart();
+	virtual void TimerStop();
 
 private:
 	Timer* timer;
