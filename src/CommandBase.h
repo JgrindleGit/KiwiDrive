@@ -3,7 +3,7 @@
 
 #include <string>
 #include "Commands/Command.h"
-#include "Subsystems/ExampleSubsystem.h"
+
 #include "Subsystems/DriveBase.h"
 #include "Subsystems/Shooter.h"
 #include "Subsystems/Cam.h"
@@ -22,7 +22,7 @@ public:
 	CommandBase();
 	static void init();
 	// Create a single static instance of all of your subsystems
-	static ExampleSubsystem *examplesubsystem;
+
 	static DriveBase *driveB;
 	static Shooter *shoot;
 	static Cam *camM;
